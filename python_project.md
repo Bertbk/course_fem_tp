@@ -10,6 +10,10 @@ type = "docs"  # Do not modify.
 
 math = true
 
+weight = 100
+diagram = false
+#markup = "mmark"
+
 
 edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "master", submodule_dir="content/course/fem_tp/"}
 
