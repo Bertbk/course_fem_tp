@@ -4,7 +4,7 @@ title = "Projet"
 date = 2018-09-09T00:00:00
 # lastmod = 2018-11-21T:00:00
 
-draft = false  # Is this a draft? true/false
+draft = true  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
@@ -55,7 +55,7 @@ Le but de ce projet est de résoudre le problème de diffraction d'une onde acou
 
 ## Maillage 
 
-Il sera généré par GMSH. Vous devez donc implémenter une fonction de lecture de [fichier `.msh`]({{<ref "/course/gmsh/basics_meshformatv2.md">}}). N'oubliez pas que le label `Physical` sera utile et doit donc être stocké dans votre code Python. La numérotation des points et des éléments est à votre discrétion (non nécessairement identique à celle de GMSH).
+Il sera généré par GMSH. Vous devez donc implémenter une fonction de lecture de [fichier `.msh`]({{<ref "/course/gmsh/basics_physical_vs_elementary.md">}}). N'oubliez pas que le label `Physical` sera utile et doit donc être stocké dans votre code Python. La numérotation des points et des éléments est à votre discrétion (non nécessairement identique à celle de GMSH).
 
 ## Bibliothèques
 

@@ -30,50 +30,18 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 Les TP associés au cours Maillage et Éléments Finis sont divisés en deux parties. Une première partie consiste à utiliser des logiciels open-source afin de résoudre un problème complet à l'aide de la méthode des éléments finis : de la création de la géométrie à la visualisation de la solution. La deuxième partie vous propose d'implémenter vous même un (petit) assembleur éléments finis en Python.
 
-## Partie 1 : vive l'open-source
-
-Pour cette partie nous utilisons deux logiciels :
+## Outils utilisés (Open Source power)
 
 1. [GMSH](https://gmsh.info), dont un [tutoriel est disponible sur le site]({{<ref "/course/gmsh/_index.md">}})
-2. [FreeFem++](https://freefem.org) : [Accès au TPs]({{< relref "menu_freefem.md">}})
-
-
-## Partie 2 : l'assemblage en Python
-
-Pour cette partie vous devez implémenter un assembleur éléments finis en Python, dont le maillage sera généré par GMSH et la solution lisible par [Paraview](https://www.paraview.org).
+2. [Python](https://www.python.org/) (que vous maîtrisez) ou [Julia](https://julialang.org/)
+3. [Paraview](https://www.paraview.org) que vous êtes en train de maîtriser
 
 ## Sur les machines de Polytech...
 
 ### GMSH
+
 Installé et exécutable depuis le terminal
 ```
 gmsh
 ```
-
-### FreeFem++
-
-Pour l'exécuter (attention aux majuscules) :
-```
-FreeFem++
-```
-(et a priori tout fonctionne)
-Vous pouvez ajouter un alias pour simplifier, par exemple
-```
-alias ff=FreeFem++
-```
-
-<!-- Pour lire un fichier GMSH dans FreeFem++, nous utilisons le module `load("gmsh)`. Pour cela, vous devez ajouter un lien vers les modules de FreeFem++
-```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/freefem/lib/ff++/3.61/lib
-```
-ou copiez le fichier suivant dans votre dossier courant :
-```
-/opt/freefem/lib/ff++/3.61/lib/gmsh.so
-```
-
-Vous pouvez bien entendu automatiser tout cela dans votre `.bash_profile` à la racine de votre Home :
-```
-#.bash_profile
-alias ff=/opt/freefem/bin/FreeFem++
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/freefem/lib/ff++/3.61/lib
-``` -->
+et (mieux !) utilisable depuis la SDK et Python

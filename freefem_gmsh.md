@@ -4,7 +4,7 @@ title = "Couplage avec GMSH"
 date = 2018-09-09T00:00:00
 # lastmod = 2018-09-09T00:00:00
 
-draft = false  # Is this a draft? true/false
+draft = true  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
@@ -92,7 +92,7 @@ Lancez le code ci-dessus dans FreeFem++, et puis :
 {{% /alert %}}
 
 {{% alert tips %}}
-Nous rappelons qu'[une page du tutoriel GMSH]({{<ref "/course/gmsh/basics_meshformatv2.md">}}) est dédiée aux labels `Physical`.
+Nous rappelons qu'[une page du tutoriel GMSH]({{<ref "/course/gmsh/basics_physical_vs_elementary.md">}}) est dédiée aux labels `Physical`.
 {{% /alert %}}
 
 ## Exercices

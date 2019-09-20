@@ -4,7 +4,7 @@ title = "(Aide) Formats de fichiers"
 date = 2018-09-09T00:00:00
 # lastmod = 2018-11-21T:00:00
 
-draft = false  # Is this a draft? true/false
+draft = true  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
@@ -33,7 +33,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 ## Format GMSH
 
-Voir [le format de fichier v2]({{<ref "/course/gmsh/basics_meshformatv2.md" >}}) et surtout le warning ci-dessous :
+Voir [le format de fichier v2]({{<ref "/course/gmsh/basics_physical_vs_elementary.md" >}}) et surtout le warning ci-dessous :
 
 {{% alert warning %}}
 Ajoutez ceci en haut de vos fichiers `.geo` :
