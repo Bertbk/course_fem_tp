@@ -32,7 +32,7 @@ Les TP associés au cours Maillage et Éléments Finis sont divisés en deux par
 
 ## Outils utilisés (Open Source power)
 
-1. [GMSH](https://gmsh.info), dont un [tutoriel est disponible sur le site]({{<ref "/course/gmsh/_index.md">}})
+1. [GMSH](https://gmsh.info), dont un [tutoriel est disponible sur le site]({{<ref "/tutorial/gmsh/_index.md">}})
 2. [Python](https://www.python.org/) (que vous maîtrisez) ou [Julia](https://julialang.org/)
 3. [Paraview](https://www.paraview.org) que vous êtes en train de maîtriser
 

@@ -92,7 +92,7 @@ Lancez le code ci-dessus dans FreeFem++, et puis :
 {{% /alert %}}
 
 {{% alert tips %}}
-Nous rappelons qu'[une page du tutoriel GMSH]({{<ref "/course/gmsh/basics_physical_vs_elementary.md">}}) est dédiée aux labels `Physical`.
+Nous rappelons qu'[une page du tutoriel GMSH]({{<ref "/tutorial/gmsh/basics_physical_vs_elementary.md">}}) est dédiée aux labels `Physical`.
 {{% /alert %}}
 
 ## Exercices

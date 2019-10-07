@@ -33,7 +33,7 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 ## Format GMSH
 
-Voir [le format de fichier v2]({{<ref "/course/gmsh/basics_physical_vs_elementary.md" >}}) et surtout le warning ci-dessous :
+Voir [le format de fichier v2]({{<ref "/tutorial/gmsh/basics_physical_vs_elementary.md" >}}) et surtout le warning ci-dessous :
 
 {{% alert warning %}}
 Ajoutez ceci en haut de vos fichiers `.geo` :
