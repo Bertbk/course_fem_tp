@@ -44,4 +44,4 @@ Installé et exécutable depuis le terminal
 ```
 gmsh
 ```
-et (mieux !) utilisable depuis la SDK et Python
+et (mieux !) via [son API et Python (ou Julia)]({{<ref "/tutorial/gmsh/_index.md#api">}})
