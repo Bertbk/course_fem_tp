@@ -1,5 +1,5 @@
 +++
-title = "TP 1 & 2"
+title = "Prise en main de GMSH"
 
 date = 2018-09-09T00:00:00
 # lastmod = 2018-11-21T:00:00
@@ -24,9 +24,9 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 # Add menu entry to sidebar.
 [menu.fem_tp]
-  parent = "TPs"
-  identifier = "tp1"
-  name = "TP 1 & 2"
+  parent = "1. Maillage avec GMSH"
+  identifier = "maillage"
+  name = "Prise en main"
   weight = 20
 
 +++

@@ -1,5 +1,5 @@
 +++
-title = "TP3 : Fonctions de forme et matrice de masse"
+title = "GMSH : API"
 
 date = 2018-09-09T00:00:00
 # lastmod = 2018-11-21T:00:00
@@ -24,13 +24,14 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 # Add menu entry to sidebar.
 [menu.fem_tp]
-  parent = "TPs"
-  identifier = "tp3"
-  name = "TP 3"
+  parent = "1. Maillage avec GMSH"
+  identifier = "api"
+  name = "API GMSH"
   weight = 30
 
 +++
 
+[Dans le tutoriel GMSH](http://bthierry.pages.math.cnrs.fr/tutorial/gmsh), intéressez vous à l'utilisation de l'API Python.
 
 ## Fonction de Forme
 
@@ -80,60 +81,4 @@ Prenons une fonction f définie sur $\Omega$. Une interpolation possible de f su
 {{% alert exercise %}}
 
 Construisez l'interpollée $\Pi\_hf$ de la fonction $f(x,y) = \sin(\pi x)\sin(\pi y)$
-{{% /alert %}}
-
-## Aire d'un triangle
-
-{{% alert exercise %}}
-Construisez une fonction prenant un triangle en argument (*e.g.* les coordonnées des sommets) et qui retourne son aire.
-{{% /alert %}}
-
-
-## Matrice de Masse
-
-La matrice de masse $M$ représente l'identité dans la base des fonctions de forme $\mathbb{P}^1-$Lagrange :
-$$
-M(I,J) = \int\_{\Omega}\varphi\_J(x)\varphi\_I(x) dx
-$$
-L'algorithme efficace permettant de construire cette matrice est l'algorithme d'assemblage suivant :
-
-```
-M = 0; // Matrice nulle
-For p = 1:N_triangles
-  For i=1:3 //3 = N_s
-    I = Loc2Glob(p, i)$ // Indice globale du i-ème sommet
-    For j=1:3 //3 = N_s
-      J = Loc2Glob(p, j)$ // Indice globale de j-ème sommet
-      M(I,J) += M^e_{p}(i,j) // Matrice de masse élémentaire du triangle T_p
-    EndFor
-  EndFor
-EndFor
-```
-La fonction `Loc2Glob(p,i)` retourne l'indice global $I$ du `i`$^{ème}$ sommet du triangle $T\_p$. La matrice de masse élémentaire $M^e\_p$(=`M^e_{p}`) du triangle $T\_p$ est donnée par ($|T\_p|$ = aire du triangle $T\_p$) :
-$$
-M^e\_p = \frac{|T\_p|}{12}\begin{pmatrix}
-2 & 1 & 1 \\\\\\
-1 & 2 & 1 \\\\\\
-1 & 1 & 2
-\end{pmatrix}
-$$
-
-{{% alert exercise %}}
-Construisez une fonction permettant de construire la matrice de masse du maillage, en prenant en compte les informations suivantes :
-
-- Utilisez [`numpy.ndarray`](https://docs.scipy.org/doc/scipy/reference/tutorial/linalg.html#numpy-matrix-vs-2d-numpy-ndarray) plutôt que  `numpy.matrix`.
-- La matrice $M$ doit vérifier la relation suivante, pour $U = [1,1,\ldots,1]^T$ : $U^T M U = \left|\Omega\right|$
-{{% /alert %}}
-
-## Matrice creuse
-
-La matrice de masse est creuse, une (très) bonne idée est d'exploiter cette propriété ! Cela permet un gain en mémoire et en CPU (pour les produits matrice-vecteur).
-
-{{% alert exercise %}}
-
-Modifiez l'algorithme d'assemblage pour :
-
-- Utiliser le format COO ([`coo_matrix` dans SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html)) plutôt que le stockage dense (`array`)
-- Une fois la matrice COO construite, transformez la en matrice CSR ([`csr_matrix`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html))
-
 {{% /alert %}}
