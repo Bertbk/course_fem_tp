@@ -39,39 +39,34 @@ B[I] = \int\_{\Omega} f(\mathbf{x}) \varphi\_I(\mathbf{x})\\;\mathrm{d}\mathbf{x
 Les poids $\omega\_m$ et les points de quadrature $(\xi\_m, \eta\_m)$ dépendent de la précision recherchée. Rappelons aussi que $\mathbf{x}(\xi\_m, \eta\_m)$ s'obtient par les fonctions d'interpolation géométrique, qui dans le cas d'éléments finis isoparamétriques, sont les mêmes que les fonctions éléments finis $\mathbb{P}^1$, c'est à dire que pour $\mathbf{x}$ appartenant à un élément de sommets $(\mathbf{s}\_i)_i$ :
 \begin{equation}
 \label{eq:param}
-\mathbf{x}(\xi\_m, \eta\_m) = \sum\_{i=1} \hat{\varphi}\_i(\xi\_m, \eta\_m)\mathbf{s}\_i,
+\mathbf{x}(\xi\_m, \eta\_m) = \sum\_{i=1} \hat{\psi}\_i(\xi\_m, \eta\_m)\mathbf{s}\_i,
 \end{equation}
 
-## Élémentaire
+Les fonctions $\hat{\psi}$ sont égales au fonctions de forme $P1$-Lagrange. Cependant, les fonction $\hat{\psi}\_i$ sont des fonctions d'interpolation *géométriques* tandis que les fonctions de forme $\hat{\varphi}\_i$ sont des fonctions d'interpolation de la solution.
 
-Pour chaque type d'élément, triangle et segment, nous aurons besoin des méthodes permettant d'obtenir les quantités suivantes: :
+## Méthodes et fonctions utiles
+
+Pour chaque type d'élément, `Triangle` ou `Segment`, nous avons besoin de méthodes permettant d'obtenir les quantités suivantes: :
 
 1. Les poids des points de quadrature
 2. Les coordonnées paramétriques des points de quadrature
-3. Les valeurs des fonctions de forme $\hat{\varphi}$ sur chaque point de quadrature
-4. Calculer les coordonnées physiques d'un point à partir de ses coordonnées paramétriques $(\xi\_m, \eta\_m)$, autrement dit, calculer la formule \eqref{eq:param}.
+3. Les coordonnées physiques des points de quadrature
+4. Les valeurs des fonctions de forme de référence $\hat{\varphi}$ sur des coordonnées paramétriques
 
-Remarquez que les 3 premiers points sont indépendants de l'élément considéré et ne dépendent que du type de l'élément considéré.
+Remarquez que les points 1, 2 ne dépendent que du type de l'élément considéré.
 
 {{% alert exercise %}}
-Pour chacun type d'élémént, triangle et segment, implémentez une méthode prenant en argument une fonction `f` et qui ajoute les contributions dans un `np.array` B:
-```bash
-Triangle.Quadrature(f, int degre, np.array B)
-{
-  For i = 1, 2...
-    I = Loc2Glob(i)
-    For m= 1,2...
-      B(I) += ...
-    End
-  End
-}
-```
+Afin de bien compartimenter chaque fonctionnalité, nous proposons :
+
+- Ajouter aux classes `Triangle` et `Segment` la méthode `def gaussPoint(self,order=2):` qui retourne, dans le format de votre choix, les poids, les coordonnées paramétriques et les coordonnées physiques des points de Gauss de l'élement considéré et pour une précision `order`. Vous aurez sans doute besoin de méthodes intermédiaires pour calculer, par exemple les $\hat{\psi}\_i(\xi,\eta)$.
+- Ajouter une fonction `def phiRef(element, i:int, param:[float]):` qui calcule $\hat{\varphi}\_i(\xi,\eta)$ sur un élément `Segment` ou `Triangle`. L'argument `param` est une liste des coordonnées paramétriques ($\xi,\eta$ pour un triangle, $s$ pour un segment))
 {{% /alert %}}
 
-## Globale
 
-Dans la classe `Mesh`, construisez une méthode de prototype suivant
+## Intégrale
+
+Construisez maintenant une fonction de prototype suivant
+```python
+def Integrale(msh:Mesh, dim:int, physical_tag:int, f, B:np.array, order=2):
 ```
-Mesh.Quadrature(int dim, int physical_tag, f, np.array B)
-```
-Cette méthode ajoute dans le vecteur `np.array B`, à l'indice `I`, la quantité décrite par \eqref{eq:B}. L'argument `f` sera une fonction décrite par l'utilisatrice/utilisateur, elle prendra 2 arguments, `x` et `y` et retournera un scalaire correspondant à $f(x,y)$.
+Cette fonction calcul l'intégrale de $f \varphi\_I$ sur le domaine de tag physique `physical_tag` et de dimension `dim`. Le résultat est alors **ajouté** dans le `B[I]` (voir \eqref{eq:B}). L'argument `f` sera une fonction décrite par l'utilisatrice/utilisateur, elle prendra 2 arguments, `x` et `y` et retournera un scalaire correspondant à $f(x,y)$.

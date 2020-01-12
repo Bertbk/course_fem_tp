@@ -10,7 +10,7 @@ type = "docs"  # Do not modify.
 math = true
 
 weight = 130
-diagram = false
+diagram = true
 
 edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "master", submodule_dir="content/course/fem_tp/"}
 
@@ -101,7 +101,7 @@ print(A.toarray())
 Nous proposons de construire notre future matrice par concaténation de triplets de type (I, J, valeur). une classe `Triplets` qui encapsule cette structure de données. Nous lui adjoignons une méthode `append` permettant d'ajouter un triplet au bout des autres :
 
 ```python
-Triplet t;           print(t.data) # ([], ([], []))
+Triplets t;           print(t.data) # ([], ([], []))
 t.append(0, 1 ,2.);  print(t.data) # ([2.], ([0], [1]))
 t.append(3, 4 ,5.2); print(t.data) # ([2., 5.2], ([0, 3], [1, 4]))
 ```
@@ -116,6 +116,7 @@ def class Triplet:
     return str(self.data)
   def append(self, I, J, val):
     # Ajoute le triplet [I, J, val] dans self.data
+    # ...
 ```
 
 {{% alert exercise %}}
@@ -134,6 +135,15 @@ A = \begin{pmatrix}
 \end{pmatrix}
 $$
 {{% /alert %}}
+
+{{< diagram>}}
+classDiagram
+      class Triplets{
+        +(float[ ], (int[ ], int[ ])) data
+          __init__(self)
+          append(self, i, j, val)
+      }
+{{< /diagram>}}
 
 ## Format CSR
 
