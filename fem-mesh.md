@@ -110,8 +110,9 @@ La méthode la plus délicate à construire est `GmshToMesh`. Pour vous aider un
 - `gmsh.model.mesh.getNodes()` : retourne tous les noeuds
 - `gmsh.model.getPhysicalGroups()` : retourne tous les groupes physiques avec leurs dimension et tag
 - `gmsh.model.getEntitiesForPhysicalGroup(dim, physical_tag)` : retourne toutes les entités d'un groupe physique
-- `gmsh.model.mesh.getElements(dim, tag)` : retourne un élément particulier
-L'algorithme ressembl surement à ceci
+- `gmsh.model.mesh.getElements(dim, tag)` : retourne tous les éléments de dimension `dim` (segments (`dim=1`), triangles (`dim=2`), ...) appartenant à l'entity de label `tag`.
+
+L'algorithme ressemble surement à ceci :
 ```
 // Création des points
 For every Nodes
