@@ -77,7 +77,7 @@ classDiagram
           +float x, y
           -static int N
           -static name="Point"
-          __init__(self, x, y, id)
+          __init__(self, x, y)
       }
       class Segment{
           int id
