@@ -27,14 +27,22 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 +++
 
+$\newcommand{\eip}{\mathbf{e}\_{\texttt{Loc2Glob(p,i)}}}$
+$\newcommand{\eI}{\mathbf{e}\_I}$
+
 ## Rappel
 
-Certaines intégrales ne peuvent être calculées analytiquement et devront être approchées numériquement via [des règles de quadrature](http://bthierry.pages.math.cnrs.fr/course/fem/implementation_matrices_elementaires/#quadratures). Prenons pour exemple d'une fonction $f$ quelconque mais connue, le second membre $B$ (un vecteur) sera alors de la forme suivante 
+Certaines intégrales ne peuvent être calculées analytiquement et devront être approchées numériquement via [des règles de quadrature](http://bthierry.pages.math.cnrs.fr/course/fem/implementation_matrices_elementaires/#quadratures). Prenons pour exemple d'une fonction $f$ quelconque mais connue, le second membre $B$ (un vecteur) sera alors de la forme suivante, où $\eI$ est le vecteur canonique de coefficient 0 partout sauf le $I^{ème}$ qui vaut 1 :
+
 \begin{equation}
 \label{eq:B}
-B[I] = \int\_{\Omega} f(\mathbf{x}) \varphi\_I(\mathbf{x})\\;\mathrm{d}\mathbf{x}
-= \sum\_{T\_p}\sum\_{i} \int\_{T\_p} f(\mathbf{x}) \varphi\_i^p(\mathbf{x})\\;\mathrm{d}\mathbf{x}
-\approx \sum\_{T\_p} \sum\_{i}\sum\_m \omega\_m f(\mathbf{x}(\xi\_m, \eta\_m)) \hat{\varphi}\_i(\xi\_m, \eta\_m)
+\begin{aligned}
+B &= \sum\_{I} \left[\int\_{\Omega} f(\mathbf{x}) \varphi\_I(\mathbf{x})\\;\mathrm{d}\mathbf{x}\right]\eI  = \sum\_{I}\left[\sum\_{T\_p} \int\_{T\_p}f(\mathbf{x}) \varphi\_I(\mathbf{x})\\;\mathrm{d}\mathbf{x}\right]\eI\\\\\\
+& = \sum\_{T\_p}\sum\_{I} \left[\int\_{T\_p}f(\mathbf{x}) \varphi\_I(\mathbf{x})\\;\mathrm{d}\mathbf{x}\right]\eI\\\\\\
+& = \sum\_{T\_p}\sum\_{i=1}^3 \left[\int\_{T\_p}f(\mathbf{x}) \varphi\_i^p(\mathbf{x})\\;\mathrm{d}\mathbf{x}\right]\eip\\\\\\
+& = \sum\_{T\_p}|\det(J\_p)|\sum\_{i=1}^3 \left[\int\_{\hat{T}}f(\mathbf{x}(\xi,\eta)) \hat{\varphi}\_i(\xi,\eta)\\;\mathrm{d}(\xi,\eta)\right]\eip\\\\\\
+& \approx \sum\_{T\_p}|\det(J\_p)|\sum\_{i=1}^3 \left[\sum\_m \omega\_m f(\mathbf{x}(\xi\_m,\eta\_m)) \hat{\varphi}\_i(\xi\_m,\eta\_m)\right]\eip\\\\\\
+\end{aligned}
 \end{equation}
 Les poids $\omega\_m$ et les points de quadrature $(\xi\_m, \eta\_m)$ dépendent de la précision recherchée. Rappelons aussi que $\mathbf{x}(\xi\_m, \eta\_m)$ s'obtient par les fonctions d'interpolation géométrique, qui dans le cas d'éléments finis isoparamétriques, sont les mêmes que les fonctions éléments finis $\mathbb{P}^1$, c'est à dire que pour $\mathbf{x}$ appartenant à un élément de sommets $(\mathbf{s}\_i)_i$ :
 \begin{equation}
