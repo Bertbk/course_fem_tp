@@ -33,19 +33,19 @@ $\newcommand{\xx}{\mathbf{x}}$
 $\newcommand{\Pb}{\mathbb{P}}$
 $\newcommand{\dn}{\partial\_{\mathbf{n}}}$
 
-{{% alert warning %}}
+{{% callout warning %}}
 Si vous utilisez GMSH en version 4 ou supérieur, vous devez ajouter ceci dans vos fichiers `.geo` :
 ```
 Mesh.MshFileVersion = 2.2;
 ```
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert warning %}}
+{{% callout warning %}}
 FreeFem++ doit disposer du module GMSH ([voir page accueil]({{<relref "_index.md#freefem">}}))
-{{% /alert %}}
+{{% /callout %}}
 ## Lecture d'un maillage GMSH avec FreeFem++
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Sous GMSH, construisez un carré unitaire avec des numéros physiques pour la surface et les 4 bords. Maillez ensuite le domaine et sauvegarder le fichier de maillage. Dans l'énoncé, ce fichier se nommera `carre.msh`, mais libre à vous de choisir un autre nom. Pour gagner du temps, voici un exemple de fichier
 ```
 // carre.geo
@@ -67,7 +67,7 @@ Physical Line(2) = {2}; // Bord 2 ("droite")
 Physical Line(3) = {3}; // Bord 3 ("haut")
 Physical Line(4) = {4}; // Bord 4 ("gauche")
 ```
-{{% /alert %}}
+{{% /callout %}}
 
 Ouvrons maintenant un fichier FreeFem++ dont l'extension par défaut est `.edp`. Nous allons lire le fichier de maillage et afficher le maillage à l'ai3e des commandes suivantes :
 
@@ -83,17 +83,17 @@ La quantité `Th` est de type `mesh`. Nous pouvons accéder à certaines donnée
   - `Th[k][i]` : indice du $i^{eme}$ nœud du triangle $k$. Attention à la numérotation entre GMSH et FreeFem++ qui peut différer.
   
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Lancez le code ci-dessus dans FreeFem++, et puis :
 
 - Affichez le nombre de triangles
 - Affichez le nombre de sommets    
 - Pour chaque triangle, affichez les indices des points ainsi que le label du triangle. Vérifiez qu'il s'agit bien du label que vous avez choisi dans le fichier .geo.    
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert tips %}}
+{{% callout tips %}}
 Nous rappelons qu'[une page du tutoriel GMSH]({{<ref "/tutorial/gmsh/basics_physical_vs_elementary.md">}}) est dédiée aux labels `Physical`.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Exercices
 
@@ -116,7 +116,7 @@ Le nombre d'onde $k$ sera fixé à $2\pi$ dans un premier temps. Le pas de maill
 {{< figure src="../disk.svg" title="Sous-marin 2D" numbered="true" width="500px">}}
 
 
-{{% alert note %}}
+{{% callout note %}}
 Pour avoir des quantités complexes dans FreeFem++, il suffit de "templater" les espaces fonctionnels (comme en C++) et le $i$ complexe est obtenu par `1i` :
 ```
 [...]
@@ -137,7 +137,7 @@ gmshExport(Th, uh[], "uh.pos");
 gmshExport(Th, ure[], "ure.pos");
 gmshExport(Th, uabs[], "uabs.pos");
 ```
-{{% /alert %}}
+{{% /callout %}}
 
 #### Plusieurs disques
 

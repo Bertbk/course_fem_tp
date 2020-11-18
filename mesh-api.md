@@ -40,7 +40,7 @@ $$
 \forall I,J = 0,\ldots, N\_s-1,\qquad \varphi\_I(\mathbf{s}\_J) = \delta\_{IJ}
 $$
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 
 À l'aide de l'API Python de GMSH :
 
@@ -52,7 +52,7 @@ $$
   - `X` et `Y` sont respectivement les coordonnées x et y des points du maillage (voir ci-dessous)
 - Affichez le tout à l'aide de [Matplotlib et de la projection 3D](https://matplotlib.org/3.1.1/gallery/mplot3d/trisurf3d.html)
 
-{{% /alert %}}
+{{% /callout %}}
 
 Pour obtenir les coordonnées des points d'un groupe `Physical` donné, vous pouvez utilisez `gmsh.model.mesh.getNodesForPhysicalGroup(dim, tag)` (voir [gmsh.py](https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py)):
 
@@ -68,17 +68,17 @@ def getNodesForPhysicalGroup(dim, tag):
   """
 ```
 
-{{% alert warning %}}
+{{% callout warning %}}
  
 - GMSH commence la numérotation des sommets à 1
 - La liste retournée par `getNodesForPhysicalGroup` n'est pas triée
-{{% /alert %}}
+{{% /callout %}}
 
 ## Interpolation P1
 
 Prenons une fonction f définie sur $\Omega$. Une interpolation possible de f sur l'espace $\mathbb{P}^1$ est la fonction $\Pi\_hf$ telle que $\Pi\_hf(\mathbf{s}) = f(\mathbf{s})$ pour chaque sommet $\mathbf{s}$ du maillage.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 
 Construisez l'interpollée $\Pi\_hf$ de la fonction $f(x,y) = \sin(\pi x)\sin(\pi y)$
-{{% /alert %}}
+{{% /callout %}}

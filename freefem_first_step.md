@@ -103,7 +103,7 @@ plot(Th);
 
 {{< figure src="../square.png" title="Carré unitaire avec 10 points de grille dans chaque direction (repris de la documentation officielle)" numbered="true" >}}
 
-{{% alert note %}}
+{{% callout note %}}
 Le langage propre à FreeFem++ est un idiome du C++ : sa syntaxe ressemble fortement à celle du C++. Par exemple, `mesh` est un type (comme une classe). Les nombres ont deux types : `real` ou `int`. Certaines fonctions et fonctionnalités standard sont accessibles dans FreeFem++ comme : 
 
 - Affichage : `cout` (sans le `std::`)
@@ -111,7 +111,7 @@ Le langage propre à FreeFem++ est un idiome du C++ : sa syntaxe ressemble forte
 - Tableaux : `a = int[2]` et l'accès `a[0]`
 
 De nombreuses autres sont présentées [dans ce tutoriel]({{< relref "freefem_annexe.md">}}).
-{{% /alert %}}
+{{% /callout %}}
 
 ## Fonctions analytiques : `func`
 
@@ -146,11 +146,11 @@ Vh gh = g;          // Interpolation de g sur l'espace Vh
 plot(gh, fill=true, dim=3, wait=true); // Affichage
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Recopiez le code ci-dessus (ainsi que ce qui concerne l'espace fonctionnel) pour afficher la fonction $g$, puis :
 
 Modifiez l'espace fonctionnel pour prendre des éléments finis $\Pb\_0$ (constant par morceau), observez le résultat sur l'interpolée de $g$.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Structure d'une fonction éléments finis
 
@@ -171,13 +171,13 @@ La valeur d'une fonction éléments finis en un *dof* particulier peut être mod
 gh[][10] = 1.0;  // Mise à 1.0 du dof numéro 10
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Amusons nous un peu :
 
 1. Comparez le nombre de degrés de liberté selon l'ordre des éléments finis, c'est-à-dire entre $\Pb\_0, \Pb\_1$ et $\Pb\_2$. Vérifiez aussi que pour les éléments finis $\Pb\_0$ nous avons bien autant de *dof* (degrees of freedom) que de triangles et pour $\Pb\_1$ autant que de sommets.
 2. Affichez une fonction de forme $\Pb\_1$ associée à un nœud quelconque (que vous choisissez).
 3. Faites de même pour $\Pb\_0$.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ### Formulations variationnelles
@@ -211,7 +211,7 @@ plot(solution, wait = true, cmm = "Solution", value = true, fill = true, dim = 3
 
 Quand `MonProbleme` est instancié avec deux arguments, la matrice est calculée (format creux), tandis que si le premier argument est nul, alors seul le membre de droite l'est (vecteur $b$).
 
-{{% alert note %}}
+{{% callout note %}}
 Il est possible de sortir la matrice dans un fichier texte :
 ```cpp
 { 
@@ -220,12 +220,12 @@ Il est possible de sortir la matrice dans un fichier texte :
 }  
 ```
 On peut la lire ensuite sous [MATLAB par exemple](http://www.um.es/freefem/ff++/uploads/Main/FFmatrix_fread.m) ou en Python (évidemment).
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Résolvez le problème avec FreeFem++ avec la commande `solve` et en extrayant la matrice et le membre de droite (*i.e.*: recopiez les codes ci-dessus).
-{{% /alert %}}
+{{% /callout %}}
 
 ### Conditions aux limites
 
@@ -237,7 +237,7 @@ Pour imposer à l'inconnue `uh` de valoir `g` sur un bord portant le label `L`, 
 ```cpp
 + on(L, uh=g)
 ```
-{{% alert exercise %}}
+{{% callout exercise %}}
 Intéressons nous au problème de Poisson suivant dans $\Omega$ le carré [0,1]x[0,1], avec condition de Dirichlet et $f(x,y) = 2\pi^2\sin(\pi x)\sin(\pi y)$ : 
 $$
 \left\\{
@@ -260,11 +260,11 @@ $$
 1. En admettant que ce problème admette une unique solution, montrez que la solution est $u(x,y) = \sin(\pi x)\sin(\pi y)$.
 2. Résolvez ce problème avec FreeFem++.
 
-{{% /alert %}}
+{{% /callout %}}
 
 ## Exercices supplémentaires
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Décomposer la frontière $\partial\Omega$ en 4 bords, $\Gamma\_1,\Gamma\_2,\Gamma\_3$ et $\Gamma\_4$, puis résoudre le problème de Poisson suivant $f(x,y) = 2\pi^2\sin(\pi x)\sin(\pi y)$  : 
 $$
 \left\\{
@@ -275,9 +275,9 @@ $$
   \end{array}
 \right.
 $$
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Résoudre l'équation d'advection diffusion avec $f(x,y) = 1+x+y$ et $\vec{w} = (0,1)^T$ :
 $$
 \left\\{
@@ -287,4 +287,4 @@ $$
   \end{array}
 \right.
 $$
-{{% /alert %}}
+{{% /callout %}}

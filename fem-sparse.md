@@ -86,7 +86,7 @@ Une matrice COO se construit alors ainsi
 A = coo_matrix(data)              # si data dans le format ci-dessus
 A = coo_matrix((val, (row, col))) # si row, col et val sont séparées
 ```
-{{% alert tips %}}
+{{% callout tips %}}
 
 Une matrice COO peut être visualisée en se transformant en `array` [avec la méthode `toarray()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html):
 
@@ -94,7 +94,7 @@ Une matrice COO peut être visualisée en se transformant en `array` [avec la m�
 print(A.toarray())
 ```
 
-{{% /alert %}}
+{{% /callout %}}
 
 ## Triplets
 
@@ -119,11 +119,11 @@ def class Triplet:
     # ...
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Construisez la classe `Triplet` et implémentez la méthode `append`. N'oubliez pas de tester votre classe.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Testez votre classe `Triplet` en construisant la matrice suivante (au format COO évidemment) :
 
 $$
@@ -134,7 +134,7 @@ A = \begin{pmatrix}
 0.5 & 2 & 0 & 2
 \end{pmatrix}
 $$
-{{% /alert %}}
+{{% /callout %}}
 
 {{< diagram>}}
 classDiagram

@@ -35,12 +35,12 @@ edit_page = {repo_url = "https://github.com/Bertbk/fem_tp", repo_branch = "maste
 
 Voir [le format de fichier v2]({{<ref "/tutorial/gmsh/basics_physical_vs_elementary.md" >}}) et surtout le warning ci-dessous :
 
-{{% alert warning %}}
+{{% callout warning %}}
 Ajoutez ceci en haut de vos fichiers `.geo` :
 ```
 Mesh.MshFileVersion = 2.2;
 ```
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Format Parview : `.vtu`

@@ -88,9 +88,9 @@ Voici une liste de bibliothèques Python que vous pouvez utiliser. Libre à vous
 3. (Relativement) **Performant** : la matrice du système étant creuse, elle sera stockée **sous format creux**, COO ou CSR à votre aide. Vous devez en revanche pouvoir m'expliquer votre choix.
 4. Je dois pouvoir fournir **mon propre maillage** et faire fonctionner votre code dessus.
 
-{{% alert note %}}
+{{% callout note %}}
 Pour pouvoir utiliser Scipy et ses [**matrices creuses**](https://docs.scipy.org/doc/scipy/reference/sparse.html) (*sparse matrices* en anglais), nous devons utiliser **Python2** (et non Python3). Le plus pratique pour construire la matrice du système au format CSR est certainement de créer une matrice [au format COO](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix) en ajoutant chaque contribution élémentaire à la suite (sans les sommer) puis de [convertir la matrice au format CSR](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.tocsr.html#scipy.sparse.coo_matrix.tocsr) à l'aide de `tocsr`. La sommation sera automatiquement effectuée par Scipy.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Astuces
 

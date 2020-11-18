@@ -60,13 +60,13 @@ Dans FreeFem++, une `matrix A` possède différents paramètres :
 
 Nous réutilisons les briques précédemment introduites. 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Ouvrez un nouveau fichier `sparse.edp` dans lequel :
 
 - Construisez la `matrix` de cette `varf` (voir TP1). Nous appellerons cette matrice `A`.
 - Calculez le rapport $nnz/n^2$ entre le nombre de coefficients non nul de la matrice et son nombre total de coefficients.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
   Modifiez votre code pour ajouter une boucle portant sur la finesse de maillage : partant d'un maillage très grossier à un très fin ($nx= 100$ par exemple). Pour chaque maillage, stockez dans un fichier le ratio $100.nnz/n^2$, puis, à la fin, affichez la courbe de ce ratio en fonction de la finesse de maille h.
-{{% /alert %}}
+{{% /callout %}}

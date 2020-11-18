@@ -100,7 +100,7 @@ Le but de cette partie du TP est de vérifier l'estimation de l'erreur \eqref{eq
 
 Nous connaissons la solution exacte de notre problème, nous l'implémentons donc dans notre code.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Dans votre fichier `analyse.edp`, construisez la solution exacte 
 ```cpp
 func f   = ... // A remplir par vos soins (fonction f)
@@ -128,7 +128,7 @@ a(u,v) &=& \dsp\int\_{\Omega}\nabla u(\xx)\cdot\nabla v(\xx)\diff \xx +\int\_{\O
 $$
 Nous avons vu (ou admettons) que cette formulation variationnelle (qui n'en est pas vraiment une) admet une unique solution. Nous rappelons que $\Hoz$ est l'espace des fonctions $v\in\Ho$ dont la trace $v|\_{\partial\Omega}$ sur $\partial\Omega$ est nulle. Dans FreeFem, cette condition est rajoutée dans la formulation faible par `+on(L1,L2,L3,..., uh=0.)` où `L1,L2,L3,...` sont les numéros des bords sur lesquels s'applique la condition de Dirichlet.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
   À l'aide du TP précédent, résolvez ce problème dans FreeFem++. Plus précisément, n'oubliez pas de :
 
   - Définir un espace fonctionnel `fespace` dans FreeFem++ (`P1` pour l'instant)
@@ -142,7 +142,7 @@ Pour résoudre la formulation variationnelle, nous utiliserons directement `solv
 Avec cette commande, la solution du problème est directement stockée dans `uh`, et il n'est plus besoin de construire la matrice et le membre de droite (ni la `varf`). Le terme `solver=LU` est ici utilisé pour forcer la résolution avec un solveur direct plutôt qu'itératif.
 
 Pour les conditions aux limites : les Labels des 4 frontières sont : 1, 2, 3 et 4.  Une fois ceci fait, comparez visuellement la solution exacte avec la solution obtenue pour être sûr que c'est (à priori) tout bon. 
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Calcul de l'erreur
@@ -164,11 +164,11 @@ Vhref uhref = uh; //interpolation
 real errL2 = sqrt(int2d(Thref)((uhref - uexh)^2))/h;
 ```
 
-{{% alert note %}}
+{{% callout note %}}
 Sur le maillage de référence $\Thref$ nous n'effectuons qu'un produit matrice-vecteur qui est bien moins coûteux qu'une résolution de système linéaire. C'est pourquoi nous pouvons nous permettre de prendre un maillage très fin.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 C'est parti :
 
 1. À l'aide du code ci-dessus, construisez un maillage structuré `Thref` du carré unité avec 200 points dans chaque direction
@@ -176,28 +176,28 @@ C'est parti :
 3. Affichez ensuite cette quantité à l'écran avec la commande `cout` (comme en C++). 
 
 Dans la suite, quand nous parlerons de "l'erreur relative $L^2$" nous entendrons cette quantité, c'est à dire l'erreur divisée par $h$.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Courbe de convergence
 
 Maintenant que nous avons calculé l'erreur pour un raffinement de maillage particulier, nous pouvons le faire sur d'autres maillages ! En d'autres termes, nous construisons une boucle pour différentes valeurs de h et stockons l'erreur relative à chaque itération. En reportant les données dans un fichier, nous serons à même d'afficher la courbe de l'erreur relative en fonction de h. 
 
-{{% alert tips %}}
+{{% callout tips %}}
 On trouvera dans la section dédiée [des commandes et informations utiles]({{< relref "freefem_annexe.md">}}) sur FreeFem++.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
   Modifiez votre code en ajoutant une boucle pour que, à chaque itération, on ait :
 
 - la résolution du problème approché pour un maillage avec `nx = ny = 5, 10, 15, ..., 100`
 - le calcul de l'erreur
 - le stockage de `h` et de l'erreur dans un fichier
   
-{{% /alert %}}
+{{% /callout %}}
 
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 À l'aide du logiciel que vous préférez (Python (matplotlib), excel, gnuplot, MATLAB, ...), afficher la courbe $\normL{\eh}/h$ en fonction de $h$. Attention, pour obtenir de jolies courbes :
   
 - Affichez la en échelle $\log-\log$
@@ -205,16 +205,16 @@ On trouvera dans la section dédiée [des commandes et informations utiles]({{< 
 - Affichez sur la même courbe (en pointillés par exemple), la courbe $y=x$ qui correspond à $\eh=h$. 
 
 Les deux premiers points peuvent être effectués dans FreeFem++ de sorte que les données du fichier de sortie soient déjà normalisés et en échelle $\log-\log$.
-{{% /alert %}} 
+{{% /callout %}} 
   
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Faites de même mais avec des éléments finis `P2` (à la fois pour l'espace de référence et les solutions approchées !). Plutôt que de modifier le code, vous pouvez rajouter la portion de code permettant d'obtenir l'erreur en $\Pb\_2$.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Sur une même figure, affichez les courbes d'erreur `P1` et `P2`, et les droites de prédictions ($\eh = h$ et $\eh=2h$).
-{{% /alert %}}
+{{% /callout %}}
 
 ## What about a circle?
 
@@ -238,9 +238,9 @@ $$
 
 La solution exacte est $u(x,y) = x^2 + y^2$.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Copiez votre fichier `analyse.edp` dans `analyse_disk.edp` et adaptez le au cas du cercle. Nous supposerons que la valeur de $h$ est toujours obtenue par $\frac{\sqrt{2}}{n}$, même si cela est sans doute légèrement faux. Obtenez les courbes de convergence pour $\Pb\_1$ et $\Pb\_2$. Commentez.
-{{% /alert %}}
+{{% /callout %}}
 
 
 ## Et pour une condition de Neumann ?
@@ -256,9 +256,9 @@ $$
 $$
 La solution exacte est $u(x,y) = \cos(\pi x)\cos(\pi y)$.
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Copiez votre fichier `analyse.edp` dans `neumann.edp` et adaptez le pour résoudre le problème ci-dessus. Comme précédemment : nous voulons voir les courbes de convergence ! 
-{{% /alert %}}
+{{% /callout %}}
 
 
 

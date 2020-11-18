@@ -36,6 +36,6 @@ Cette fonction prend comme argument le `Triplets triplets` et le vecteur `B` du 
 Pour cela, nous parcourons les noeuds `I` du domaine de Dirichlet. Puis, dans la liste des indices ligne de `triplets`, dès qu'un occurence à `I` est obtenu, la valeur de ce triplet est mise à $0$.
 Il ne faut pas oublier, à la fin, d'ajouter un triplet `(I,I,1)` correspondant au terme diagonal et de modifier le coefficient `B[I] = g(x,y)`.
 
-{{% alert note %}}
+{{% callout note %}}
 Cette technique n'est peut être pas la plus optimale ! Mais elle a le mérite de fonctionner...
-{{% /alert %}}
+{{% /callout %}}

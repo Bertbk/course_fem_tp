@@ -60,9 +60,9 @@ def mass_elem(element, triplets, alpha =1.):
 
 Cette fonction calcule [les coefficients de la matrice élémentaire](http://bthierry.pages.math.cnrs.fr/course/fem/implementation_matrices_elementaires/) de l'élément (selon son type) et les ajoute à `triplets`.
 
-{{% alert note%}}
+{{% callout note%}}
 Pour un élément donné, son type (`Segment` ou `Triangle`) est donné par son paramètre `name`. 
-{{% /alert %}}
+{{% /callout %}}
 
 ## Matrice de masse globale
 
@@ -74,12 +74,12 @@ def Mass(msh, dim, physical_tag, triplets):
     #...
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Au boulot ! Assurez vous que la matrice de masse globale $M$ associée au domaine $\Omega$ vérifie la relation suivante
 $$
 U^T M.U = |\Omega|, \qquad U = [1, 1, 1, \ldots, 1]^T.
 $$
-{{% /alert%}}
+{{% /callout%}}
 
 ## Matrice de Rigidité
 
@@ -90,11 +90,11 @@ def gradPhi(element, i:int):
     # ...
 ```
 
-{{% alert exercise %}}
+{{% callout exercise %}}
 Ajoutez les fonctionnalités dans votre code permettant de calculer les contributions élémentaires des matrices de rigidité puis la matrice globale. 
 
 Vérifiez que votre matrice de rigidité $K$ satisfait bien la relation suivante :
 $$
 K U = 0, \qquad U = [1, 1, 1, \ldots, 1]^T.
 $$
-{{% /alert %}}
+{{% /callout %}}
