@@ -104,7 +104,7 @@ classDiagram
       Triangle <.. Mesh
 {{< /diagram>}}
 
-{{< alert tips >}}
+{{< callout tips >}}
 La méthode la plus délicate à construire est `GmshToMesh`. Pour vous aider un petit peu, n'hésitez pas à fouiller dans [l'API de GMSH](https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py) :
 
 - `gmsh.model.mesh.getNodes()` : retourne tous les noeuds
@@ -125,4 +125,4 @@ For every Physical Entity
 
 ```
 
-{{< /alert >}}
+{{< /callout >}}
